@@ -11,6 +11,7 @@ import { tp } from './tp.js';
 import { gamemode } from './gamemode.js';
 import { weather } from './weather.js';
 import { advancement } from './advancement.js';
+import { give } from './give.js';
 import type { Command } from '../types/index.js';
 
 export const commands: Record<string, Command> = {
@@ -27,4 +28,5 @@ export const commands: Record<string, Command> = {
   gamemode,
   weather,
   advancement,
+  give,
 };

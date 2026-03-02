@@ -1,5 +1,6 @@
 import {
   type ChatInputCommandInteraction,
+  PermissionFlagsBits,
   SlashCommandBuilder,
 } from 'discord.js';
 import type { Command } from '../types/index.js';
@@ -9,6 +10,7 @@ export const op: Command = {
   data: new SlashCommandBuilder()
     .setName('op')
     .setDescription('Donner les privilèges administrateur à un joueur')
+    .setDefaultMemberPermissions(PermissionFlagsBits.Administrator)
     .addStringOption((option) =>
       option
         .setName('pseudo')

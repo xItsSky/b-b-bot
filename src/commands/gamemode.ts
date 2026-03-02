@@ -1,5 +1,6 @@
 import {
   type ChatInputCommandInteraction,
+  PermissionFlagsBits,
   SlashCommandBuilder,
 } from 'discord.js';
 import type { Command } from '../types/index.js';
@@ -9,6 +10,7 @@ export const gamemode: Command = {
   data: new SlashCommandBuilder()
     .setName('gamemode')
     .setDescription("Changer le mode de jeu d'un joueur")
+    .setDefaultMemberPermissions(PermissionFlagsBits.Administrator)
     .addStringOption((option) =>
       option
         .setName('mode')

@@ -1,4 +1,11 @@
-import { Client, Events, GatewayIntentBits, REST, Routes } from 'discord.js';
+import {
+  Client,
+  Events,
+  GatewayIntentBits,
+  PermissionFlagsBits,
+  REST,
+  Routes,
+} from 'discord.js';
 import { RconService } from './src/services/rcon.service.js';
 import { commands } from './src/commands/index.js';
 import { config } from './src/config/index.js';
@@ -31,6 +38,20 @@ client.on(Events.InteractionCreate, async (interaction) => {
 
   const command = commands[interaction.commandName];
   if (!command) return;
+
+  // Security check: Verify administrator permissions if the command is restricted
+  if (
+    command.data.default_member_permissions ===
+      PermissionFlagsBits.Administrator.toString() &&
+    !interaction.memberPermissions?.has(PermissionFlagsBits.Administrator)
+  ) {
+    await interaction.reply({
+      content:
+        "Vous n'avez pas la permission d'exécuter cette commande d'administration.",
+      ephemeral: true,
+    });
+    return;
+  }
 
   try {
     await command.execute(interaction, rconService);

@@ -1,5 +1,6 @@
 import {
   type ChatInputCommandInteraction,
+  PermissionFlagsBits,
   SlashCommandBuilder,
 } from 'discord.js';
 import type { Command } from '../types/index.js';
@@ -9,6 +10,7 @@ export const msg: Command = {
   data: new SlashCommandBuilder()
     .setName('msg')
     .setDescription('Envoie un message à tous les joueurs')
+    .setDefaultMemberPermissions(PermissionFlagsBits.Administrator)
     .addStringOption((option) =>
       option
         .setName('message')

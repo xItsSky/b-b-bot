@@ -1,5 +1,6 @@
 import {
   type ChatInputCommandInteraction,
+  PermissionFlagsBits,
   SlashCommandBuilder,
 } from 'discord.js';
 import type { Command } from '../types/index.js';
@@ -9,6 +10,7 @@ export const advancement: Command = {
   data: new SlashCommandBuilder()
     .setName('advancement')
     .setDescription("Gérer les succès (advancements) d'un joueur")
+    .setDefaultMemberPermissions(PermissionFlagsBits.Administrator)
     .addSubcommand((subcommand) =>
       subcommand
         .setName('revoke')

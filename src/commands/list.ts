@@ -1,5 +1,6 @@
 import {
   type ChatInputCommandInteraction,
+  PermissionFlagsBits,
   SlashCommandBuilder,
 } from 'discord.js';
 import type { Command } from '../types/index.js';
@@ -8,7 +9,8 @@ import type { RconService } from '../services/rcon.service.js';
 export const list: Command = {
   data: new SlashCommandBuilder()
     .setName('list')
-    .setDescription('Liste les joueurs connectés au serveur Minecraft'),
+    .setDescription('Liste les joueurs connectés au serveur Minecraft')
+    .setDefaultMemberPermissions(PermissionFlagsBits.Administrator),
   async execute(
     interaction: ChatInputCommandInteraction,
     rconService: RconService,

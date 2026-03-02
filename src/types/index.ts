@@ -1,6 +1,8 @@
 import type {
   ChatInputCommandInteraction,
   SlashCommandBuilder,
+  SlashCommandOptionsOnlyBuilder,
+  SlashCommandSubcommandsOnlyBuilder,
 } from 'discord.js';
 import type { RconService } from '../services/rcon.service.js';
 
@@ -16,7 +18,10 @@ export interface BotConfig {
 }
 
 export interface Command {
-  data: SlashCommandBuilder;
+  data:
+    | SlashCommandBuilder
+    | SlashCommandOptionsOnlyBuilder
+    | SlashCommandSubcommandsOnlyBuilder;
   execute(
     interaction: ChatInputCommandInteraction,
     rconService: RconService,
