@@ -7,15 +7,20 @@ import {
   Routes,
 } from 'discord.js';
 import { RconService } from './src/services/rcon.service.js';
+import { SchedulerService } from './src/services/scheduler.service.js';
 import { commands } from './src/commands/index.js';
 import { config } from './src/config/index.js';
 
 const client = new Client({ intents: [GatewayIntentBits.Guilds] });
 
 const rconService = new RconService(config.rcon);
+const schedulerService = new SchedulerService(rconService);
 
 client.once(Events.ClientReady, async (readyClient) => {
   console.log(`Ready! Logged in as ${readyClient.user.tag}`);
+
+  // Initialisation du scheduler
+  schedulerService.init();
 
   // Register slash commands
   const rest = new REST({ version: '10' }).setToken(config.token);

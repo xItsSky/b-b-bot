@@ -27,3 +27,9 @@ export interface Command {
     rconService: RconService,
   ): Promise<void>;
 }
+
+export interface ScheduledTask {
+  name: string;
+  cron: string;
+  command: string;
+}
