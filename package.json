@@ -1,0 +1,44 @@
+{
+  "name": "blocks-and-blades-bot",
+  "version": "1.0.0",
+  "description": "",
+  "homepage": "https://github.com/xItsSky/b-b-bot#readme",
+  "bugs": {
+    "url": "https://github.com/xItsSky/b-b-bot/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xItsSky/b-b-bot.git"
+  },
+  "license": "ISC",
+  "author": "Emo Quentin",
+  "type": "module",
+  "main": "dist/main.js",
+  "scripts": {
+    "build": "tsc",
+    "start": "npm run build && env-cmd node dist/main.js",
+    "dev": "env-cmd ts-node main.ts",
+    "lint": "eslint .",
+    "format": "prettier --write .",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "@types/dotenv": "^6.1.1",
+    "@types/node": "^25.3.3",
+    "@typescript-eslint/eslint-plugin": "^8.56.1",
+    "@typescript-eslint/parser": "^8.56.1",
+    "eslint": "^10.0.2",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-prettier": "^5.5.5",
+    "prettier": "^3.8.1",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.9.3",
+    "typescript-eslint": "^8.56.1"
+  },
+  "dependencies": {
+    "discord.js": "^14.25.1",
+    "dotenv": "^17.3.1",
+    "env-cmd": "^11.0.0"
+  }
+}
